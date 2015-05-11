@@ -12,12 +12,11 @@ and getopt instead of argparse.
 
 """
 import sys
-import os
 import re
 import com.xhaus.jyson.JysonCodec as json
 import getopt
 
-signature = 'cmongo2csv 1.0 [Jython] (https://github.com/stpettersens/cmongo2csv)'
+signature = 'cmongo2csv 1.0.1 [Jython] (https://github.com/stpettersens/cmongo2csv)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -53,9 +52,6 @@ def cmongo2csv(file, out, separator, verbose, version, info):
 	if separator == None: separator = ','
 
 	if out.endswith('.tsv'): separator = '\t'
-
-	head, tail = os.path.split(file)
-	collection = re.sub('.json', '', tail)
 
 	f = open(file, 'r')
 	lines = f.readlines()

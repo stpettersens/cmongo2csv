@@ -11,12 +11,11 @@ Tweaked for IronPython.
 Use -h switch for usage information.
 """
 import sys
-import os
 import re
 import json
 import argparse
 
-signature = 'cmongo2csv 1.0 [IPY] (https://github.com/stpettersens/cmongo2csv)'
+signature = 'cmongo2csv 1.0.1 [IPY] (https://github.com/stpettersens/cmongo2csv)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -52,9 +51,6 @@ def cmongo2csv(file, out, separator, verbose, version, info):
 	if separator == None: separator = ','
 
 	if out.endswith('.tsv'): separator = '\t'
-
-	head, tail = os.path.split(file)
-	collection = re.sub('.json', '', tail)
 
 	f = open(file, 'r')
 	lines = f.readlines()
